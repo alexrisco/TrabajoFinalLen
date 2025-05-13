@@ -1,0 +1,579 @@
+/* Estilos Generales */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    margin: 20px;
+}
+.logo-imagen {
+    max-height: 250px; /* Ajusta este valor al tamaño deseado */
+    width: auto; /* Para mantener la proporción */
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.logo p {
+    margin: 0 0 0 10px;
+    font-size: 0.9em;
+}
+
+.header-nav ul.botones-navegacion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.header-nav ul.botones-navegacion li {
+    margin-left: 15px;
+}
+
+.header-nav ul.botones-navegacion li a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-nav .carrito a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Secondary Navigation (index.html) */
+.secondary-nav {
+    background-color: #eee;
+    padding: 0.5em 0;
+    text-align: center;
+}
+
+.secondary-nav ul.botones-interes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.secondary-nav ul.botones-interes li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.secondary-nav ul.botones-interes li a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Seccion Inicio (index.html) */
+.seccion-inicio {
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.seccion-inicio img {
+    max-width: 80%;
+    height: auto;
+    margin-top: 15px;
+}
+
+/* Hablamos Nosotros (index.html) */
+.hablamos-nosotros {
+    padding: 20px;
+    background-color: #ddd;
+    margin-bottom: 20px;
+}
+
+/* Opciones Compra (index.html) */
+.opciones-compra {
+    padding: 20px;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.boton-ver-todas a {
+    display: inline-block;
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.camisetas-destacadas {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.camiseta-miniatura {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 150px;
+}
+
+.camiseta-miniatura img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Página Camisetas (camisetas.jsp) */
+.pagina-camisetas {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 960px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.listado-camisetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.camiseta-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.camiseta-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.camiseta-item h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.camiseta-item p {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.camiseta-item a {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* Página Equipos (equipos.html) */
+.pagina-equipos {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 960px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.listado-equipos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.equipo-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+}
+
+.equipo-item a {
+    text-decoration: none;
+    color: #333;
+}
+
+.equipo-item img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.equipo-item h3 {
+    margin-top: 0;
+    font-size: 1em;
+}
+
+/* Página Temporadas (temporadas.html) */
+.pagina-temporadas {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 960px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.listado-temporadas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.listado-temporadas ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Página Contacto (contacto.html) */
+.pagina-contacto {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-contacto .form-group {
+    margin-bottom: 15px;
+}
+
+.formulario-contacto label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formulario-contacto input[type="text"],
+.formulario-contacto input[type="email"],
+.formulario-contacto textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.formulario-contacto textarea {
+    resize: vertical;
+}
+
+.formulario-contacto .btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.formulario-contacto .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Página Login (login.html) */
+.login-form, .register-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-form h2, .register-form h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.login-form .form-group, .register-form .form-group {
+    margin-bottom: 10px;
+}
+
+.login-form label, .register-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.register-form input[type="text"],
+.register-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.login-form button[type="submit"],
+.register-form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.login-form button[type="submit"]:hover,
+.register-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: green;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.footer-nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.footer-nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* carrito */
+
+/* Estilos específicos para la página del carrito */
+.pagina-carrito {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 960px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; /* Alinea los items y el resumen en la parte superior */
+}
+
+#carrito-items {
+    flex-grow: 2; /* Ocupa más espacio para la lista de items */
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.carrito-item:last-child {
+    border-bottom: none;
+}
+
+.item-imagen {
+    width: 100px;
+    margin-right: 15px;
+}
+
+.item-imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.item-detalles {
+    flex-grow: 1;
+}
+
+.item-detalles h3 {
+    margin-top: 0;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.item-detalles p {
+    margin-bottom: 3px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.item-cantidad {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.item-cantidad label {
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+
+.item-cantidad input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.item-acciones {
+    margin-left: 15px;
+}
+
+.boton-eliminar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.boton-eliminar:hover {
+    background-color: #c82333;
+}
+
+.item-subtotal {
+    font-weight: bold;
+    margin-left: auto;
+    font-size: 1em;
+}
+
+.resumen-carrito {
+    flex-shrink: 0;
+    width: 300px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.resumen-carrito h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.resumen-fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.resumen-fila.total {
+    font-weight: bold;
+    font-size: 1.1em;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.boton-comprar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    display: block;
+    margin-top: 15px;
+}
+
+.boton-comprar:hover {
+    background-color: #0056b3;
+}
+
+.pagina-login {
+    padding: 20px;
+    background-color: white;
+    margin: 50px auto; /* Centrar verticalmente también */
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pagina-login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.pagina-login .form-group {
+    margin-bottom: 15px;
+}

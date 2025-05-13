@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colección 90 - Camisetas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .camiseta-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .camiseta-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .camiseta-item img {
+            max-width: 80%;
+            height: auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .boton-carrito {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .boton-carrito:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo Colección 90" class="logo-imagen">
+            <h2>COLECCION 90</h2>
+        </div>
+        <nav class="header-nav">
+            <ul class="botones-navegacion">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="camisetas.html">Camisetas</a></li>
+                <li><a href="equipos.html">Equipos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="carrito.php">Carrito</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Nuestra Colección de Camisetas Antiguas</h1>
+        <div id="lista-camisetas">
+            <p>Cargando camisetas...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Colección 90 - Camisetas de Fútbol Antiguas</p>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const listaCamisetasDiv = document.getElementById('lista-camisetas');
+
+            fetch('obtener_camisetas.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    listaCamisetasDiv.innerHTML = '';
+
+                    if (data && data.length > 0) {
+                        data.forEach(camiseta => {
+                            const camisetaDiv = document.createElement('div');
+                            camisetaDiv.classList.add('camiseta-item');
+                            camisetaDiv.innerHTML = `
+                                <h3>${camiseta.equipo} ${camiseta.temporada}</h3>
+                                <p>Referencia: ${camiseta.referencia}</p>
+                                <p>Marca: ${camiseta.marca}</p>
+                                <p>Talla: ${camiseta.talla}</p>
+                                <p>Precio: ${camiseta.precio} €</p>
+                                <p>Descripción: ${camiseta.descripcion}</p>
+                                ${camiseta.imagen_url ? `<img src="${camiseta.imagen_url}" alt="Camiseta ${camiseta.equipo} ${camiseta.temporada}" width="200">` : ''}
+                                <button class="boton-carrito" data-referencia="${camiseta.referencia}">Añadir al carrito</button>
+                            `;
+                            listaCamisetasDiv.appendChild(camisetaDiv);
+                        });
+
+                        // Añadir event listeners a los botones de "Añadir al carrito" después de que se carguen
+                        const botonesCarrito = document.querySelectorAll('.boton-carrito');
+                        botonesCarrito.forEach(boton => {
+                            boton.addEventListener('click', function() {
+                                const referenciaCamiseta = this.dataset.referencia;
+
+                                fetch('añadir_al_carrito.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                    },
+                                    body: `referencia=${referenciaCamiseta}`
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log('Respuesta del servidor:', data);
+                                    if (data.status === 'success') {
+                                        alert('¡Camiseta añadida al carrito!');
+                                        // Aquí podrías actualizar la visualización del carrito (ej: número de items)
+                                    } else {
+                                        alert(`Error al añadir al carrito: ${data.message}`);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error al enviar la petición:', error);
+                                    alert('Hubo un problema al añadir al carrito.');
+                                });
+                            });
+                        });
+
+                    } else if (data && data.error) {
+                        listaCamisetasDiv.innerHTML = `<p class="error">Error al cargar las camisetas: ${data.error}</p>`;
+                    } else {
+                        listaCamisetasDiv.innerHTML = '<p>No se encontraron camisetas en la base de datos.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al obtener las camisetas:', error);
+                    listaCamisetasDiv.innerHTML = `<p class="error">Error al cargar las camisetas: ${error.message}</p>`;
+                });
+        });
+    </script>
+</body>
+</html>
