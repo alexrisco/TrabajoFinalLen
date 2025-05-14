@@ -23,6 +23,16 @@ try {
     die("Error de conexión: " . $e->getMessage());
 }
 
+// Procesar la eliminación del carrito si se recibe la solicitud
+if (isset($_GET['eliminar'])) {
+    $referencia_a_eliminar = $_GET['eliminar'];
+    if (isset($_SESSION['carrito'][$referencia_a_eliminar])) {
+        unset($_SESSION['carrito'][$referencia_a_eliminar]);
+        header("Location: carrito.php"); // Redirigir para actualizar la vista
+        exit();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +41,8 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras - Colección 90</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Y+5n76dVWjxYh0utjz4dSgKK+itHv3JnCVLrV0YbCLH1hHw7VgZuEIwhImpQDax" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA5usXiu1uMjKlPj5GV9KiNiEaWPfy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
         .carrito-item {
@@ -48,6 +60,38 @@ try {
         .carrito-item .acciones {
             display: flex;
             gap: 10px;
+        }
+        .resumen-carrito {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: right;
+        }
+        .resumen-fila {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .resumen-fila.total {
+            font-weight: bold;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .boton-comprar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            text-decoration: none; /* Para que el enlace dentro del botón no tenga subrayado */
+        }
+        .boton-comprar:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -77,7 +121,6 @@ try {
             echo '<ul id="lista-carrito">';
             $total_carrito = 0;
             foreach ($_SESSION['carrito'] as $referencia => $cantidad) {
-                // Consultar la base de datos para obtener la información de la camiseta
                 $sql = "SELECT equipo, precio FROM camisetas WHERE referencia = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("s", $referencia);
@@ -98,35 +141,49 @@ try {
                     echo '<p>Subtotal: ' . htmlspecialchars(number_format($subtotal, 2)) . ' €</p>';
                     echo '</div>';
                     echo '<div class="acciones">';
-                    echo '<button>Eliminar</button>'; // TODO: Implementar funcionalidad de eliminar
+                    echo '<a href="?eliminar=' . htmlspecialchars($referencia) . '">Eliminar</a>';
                     echo '</div>';
                     echo '</li>';
                 }
                 $stmt->close();
             }
             echo '</ul>';
-            echo '<p><strong>Total del carrito: ' . htmlspecialchars(number_format($total_carrito, 2)) . ' €</strong></p>';
-            echo '<button>Finalizar Compra</button>'; // TODO: Implementar funcionalidad de finalizar compra
+
+            echo '<div class="resumen-carrito">';
+            echo '<div class="resumen-fila">';
+            echo '<p>Subtotal:</p>';
+            echo '<span>' . htmlspecialchars(number_format($total_carrito, 2)) . ' €</span>';
+            echo '</div>';
+            echo '<div class="resumen-fila">';
+            echo '<p>Envío:</p>';
+            echo '<span>Calculado al finalizar</span>';
+            echo '</div>';
+            echo '<div class="resumen-fila total">';
+            echo '<p>Total:</p>';
+            echo '<span>' . htmlspecialchars(number_format($total_carrito, 2)) . ' €</span>';
+            echo '</div>';
+            echo '<a href="finalizar_compra.php" class="boton-comprar">Finalizar Compra</a>';
+            echo '</div>';
+
         } else {
             echo '<p>Tu carrito está vacío.</p>';
         }
 
-        // Cerrar la conexión a la base de datos
         if ($conn) {
             $conn->close();
         }
         ?>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Colección 90 - Camisetas de Fútbol Antiguas</p>
-        <nav class="footer-nav">
-            <ul>
-                <li><a href="#">Términos y Condiciones</a></li>
-                <li><a href="#">Política de Privacidad</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-    </footer>
+<footer class = "footer-carrito ">
+    <p>&copy; 2025 Colección 90 - Camisetas de Fútbol Antiguas</p>
+    <nav class="footer-nav">
+        <ul>
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+</footer>
 </body>
 </html>
