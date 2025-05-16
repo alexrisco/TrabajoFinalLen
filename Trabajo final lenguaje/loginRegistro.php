@@ -2,7 +2,7 @@
 session_start(); // Iniciar la sesión (necesario para guardar información del usuario)
 
 // **¡REEMPLAZA ESTOS VALORES CON TUS CREDENCIALES REALES DE MYSQL!**
-$servername = "localhost:3307";
+$servername = "localhost:3306";
 $database = "coleccion_90";
 $username = "root";
 $password = "";

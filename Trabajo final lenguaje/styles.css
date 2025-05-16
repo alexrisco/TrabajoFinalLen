@@ -6,14 +6,19 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
 }
 
-.container {
+.container, .pagina-camisetas, .pagina-equipos, .pagina-temporadas, .pagina-contacto, .pagina-login, .pagina-carrito {
+    flex-grow: 1; /* Permite que el contenedor principal crezca y empuje el footer hacia abajo */
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 400px;
+    /* La altura fija en .container puede causar problemas de scroll en contenido largo, considera removerla o usar min-height */
+    /* height: 400px; */
 }
 
 /* Header */
@@ -25,19 +30,19 @@ header {
     justify-content: space-between;
     align-items: center;
     max-height: 200px;
-    height: 60px
-    
+    height: 60px;
+    box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
 }
-
 
 .logo {
     display: flex;
     align-items: center;
-    width: 20px;
-    margin: 20px;
+    width: auto; /* Ajusta según sea necesario */
+    margin-right: 20px; /* Espacio entre logo e imagen */
 }
+
 .logo-imagen {
-    max-height: 250px; /* Ajusta este valor al tamaño deseado */
+    max-height: 50px; /* Ajusta este valor al tamaño deseado */
     width: auto; /* Para mantener la proporción */
 }
 
@@ -140,6 +145,7 @@ header {
     justify-content: center;
     gap: 20px;
     margin-top: 15px;
+    flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
 }
 
 .camiseta-miniatura {
@@ -147,6 +153,7 @@ header {
     border: 1px solid #ccc;
     padding: 10px;
     width: 150px;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
 }
 
 .camiseta-miniatura img {
@@ -156,12 +163,8 @@ header {
 
 /* Página Camisetas (camisetas.jsp) */
 .pagina-camisetas {
-    padding: 20px;
-    background-color: white;
     margin: 20px auto;
     max-width: 960px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .listado-camisetas {
@@ -175,6 +178,7 @@ header {
     padding: 15px;
     border-radius: 5px;
     text-align: center;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
 }
 
 .camiseta-item img {
@@ -206,12 +210,8 @@ header {
 
 /* Página Equipos (equipos.html) */
 .pagina-equipos {
-    padding: 20px;
-    background-color: white;
     margin: 20px auto;
     max-width: 960px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -229,6 +229,7 @@ header {
     border-radius: 5px;
     width: 150px;
     text-align: center;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
 }
 
 .equipo-item a {
@@ -249,12 +250,8 @@ header {
 
 /* Página Temporadas (temporadas.html) */
 .pagina-temporadas {
-    padding: 20px;
-    background-color: white;
     margin: 20px auto;
     max-width: 960px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .listado-temporadas ul {
@@ -274,16 +271,13 @@ header {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
 }
 
 /* Página Contacto (contacto.html) */
 .pagina-contacto {
-    padding: 20px;
-    background-color: white;
     margin: 20px auto;
     max-width: 500px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .formulario-contacto .form-group {
@@ -326,31 +320,32 @@ header {
 }
 
 /* Página Login (login.html) */
-.login-form, .register-form {
+.pagina-login, .register-form {
     margin-bottom: 20px;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
-.login-form h2, .register-form h2 {
+.pagina-login h2, .register-form h2 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 1.3em;
+    text-align: center; /* Centrar el título en la página de login */
 }
 
-.login-form .form-group, .register-form .form-group {
+.pagina-login .form-group, .register-form .form-group {
     margin-bottom: 10px;
 }
 
-.login-form label, .register-form label {
+.pagina-login label, .register-form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.login-form input[type="text"],
-.login-form input[type="password"],
+.pagina-login input[type="text"],
+.pagina-login input[type="password"],
 .register-form input[type="text"],
 .register-form input[type="password"] {
     width: 100%;
@@ -361,7 +356,7 @@ header {
     font-size: 1em;
 }
 
-.login-form button[type="submit"],
+.pagina-login button[type="submit"],
 .register-form button[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -370,9 +365,10 @@ header {
     border-radius: 5px;
     font-size: 1em;
     cursor: pointer;
+    width: 100%; /* Hacer que el botón ocupe todo el ancho */
 }
 
-.login-form button[type="submit"]:hover,
+.pagina-login button[type="submit"]:hover,
 .register-form button[type="submit"]:hover {
     background-color: #0056b3;
 }
@@ -392,33 +388,22 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 5px;
-    display: flex;
-    bottom: 0;
-    height: 400px; 
-}
-.footer-carrito{
-    footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 5px;
-    display: flex;
-    bottom: 0;
-    height: 400px; 
-}
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .footer-nav ul {
     list-style: none;
     padding: 0;
-    margin: 0;
-    display: inline-block;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .footer-nav ul li {
-    display: inline;
-    margin: 0 10px;
+    margin: 5px 10px;
 }
 
 .footer-nav ul li a {
@@ -430,12 +415,8 @@ footer {
 
 /* Estilos específicos para la página del carrito */
 .pagina-carrito {
-    padding: 20px;
-    background-color: white;
     margin: 20px auto;
     max-width: 960px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     gap: 30px;
     align-items: flex-start; /* Alinea los items y el resumen en la parte superior */
@@ -500,6 +481,7 @@ footer {
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 0.9em;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
 }
 
 .item-acciones {
@@ -532,6 +514,7 @@ footer {
     padding: 15px;
     background-color: #f9f9f9;
     border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
 }
 
 .resumen-carrito h3 {
@@ -570,29 +553,5 @@ footer {
 }
 
 .boton-comprar:hover {
-    background-color: #0056b3;
-}
-
-.pagina-login {
-    padding: 20px;
-    background-color: white;
-    margin: 50px auto; /* Centrar verticalmente también */
-    max-width: 400px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.pagina-login h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.pagina-login .form-group {
-    margin-bottom: 15px;
-}
-
-.footer {
-    width: 100%;
-    height: 150px;
-}
+    background-color: #333;
+     }

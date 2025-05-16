@@ -6,7 +6,7 @@ $servername = "localhost";
 $database = "coleccion_90";
 $username = "root";
 $password = "";
-$port = 3307;
+$port = 3306;
 
 $conn = null;
 
@@ -106,7 +106,6 @@ if (isset($_GET['eliminar'])) {
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="camisetas.html">Camisetas</a></li>
                 <li><a href="equipos.html">Equipos</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
                 <li><a href="carrito.php">Carrito</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
@@ -181,7 +180,7 @@ if (isset($_GET['eliminar'])) {
         <ul>
             <li><a href="#">Términos y Condiciones</a></li>
             <li><a href="#">Política de Privacidad</a></li>
-            <li><a href="#">Contacto</a></li>
+            
         </ul>
     </nav>
 </footer>

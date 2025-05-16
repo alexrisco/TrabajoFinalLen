@@ -33,7 +33,6 @@ if (isset($_GET['cliente_id']) && is_numeric($_GET['cliente_id'])) {
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="camisetas.html">Camisetas</a></li>
                 <li><a href="equipos.html">Equipos</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
                 <li><a href="carrito.php">Carrito</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
@@ -54,7 +53,6 @@ if (isset($_GET['cliente_id']) && is_numeric($_GET['cliente_id'])) {
         <ul>
             <li><a href="#">Términos y Condiciones</a></li>
             <li><a href="#">Política de Privacidad</a></li>
-            <li><a href="#">Contacto</a></li>
         </ul>
     </nav>
 </footer>

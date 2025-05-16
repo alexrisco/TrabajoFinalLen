@@ -6,7 +6,7 @@ $servername = "localhost";
 $database = "coleccion_90";
 $username = "root";
 $password = "";
-$port = 3307;
+$port = 3306;
 
 $conn = null;
 
@@ -93,7 +93,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="camisetas.html">Camisetas</a></li>
                 <li><a href="equipos.html">Equipos</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
                 <li><a href="carrito.php">Carrito</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
@@ -121,13 +120,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Información del Cliente</h2>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>">
+                <input type="text" id="nombre" name="nombre" value="<?php echo isset($_POST['nombre']) ? htmlspecialchars($_POST['nombre']) : ''; ?>">
 
                 <label for="apellidos">Apellidos:</label>
-                <input type="text" id="apellidos" name="apellidos" value="<?php echo htmlspecialchars($apellidos); ?>">
+                <input type="text" id="apellidos" name="apellidos" value="<?php echo isset($_POST['apellidos']) ? htmlspecialchars($_POST['apellidos']) : ''; ?>">
 
                 <label for="correo">Correo Electrónico:</label>
-                <input type="email" id="correo" name="correo" value="<?php echo htmlspecialchars($correo); ?>">
+                <input type="email" id="correo" name="correo" value="<?php echo isset($_POST['correo']) ? htmlspecialchars($_POST['correo']) : ''; ?>">
 
                 <h2>Información de Pago (Simulada)</h2>
                 <p>Por favor, introduce los datos de tu tarjeta de crédito:</p>
@@ -151,7 +150,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <ul>
             <li><a href="#">Términos y Condiciones</a></li>
             <li><a href="#">Política de Privacidad</a></li>
-            <li><a href="#">Contacto</a></li>
         </ul>
     </nav>
 </footer>

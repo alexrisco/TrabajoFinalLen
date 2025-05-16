@@ -5,7 +5,7 @@ $servername = "localhost"; // O la dirección de tu servidor MySQL
 $database = "coleccion_90"; // El nombre de tu base de datos
 $username = "root"; // Tu nombre de usuario de MySQL
 $password = ""; // Tu contraseña de MySQL
-$port = 3307; // ¡Asegúrate de usar el puerto correcto!
+$port = 3306; // ¡Asegúrate de usar el puerto correcto!
 
 $conn = null; // Inicializar la variable de conexión
 
