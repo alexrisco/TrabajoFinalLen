@@ -3,7 +3,7 @@ session_start();
 
 // Verificar si el usuario ya está logueado
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: index.html"); // Cambia "index.html" por tu página principal
+    header("location: index.html"); // Asegúrate de que la ruta sea correcta
     exit;
 }
 

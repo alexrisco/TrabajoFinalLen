@@ -1,6 +1,4 @@
 <?php
-session_start(); // Iniciar la sesión
-
 // **¡REEMPLAZA ESTOS VALORES CON TUS CREDENCIALES REALES DE MYSQL!**
 $servername = "localhost";
 $database = "coleccion_90";
@@ -47,7 +45,7 @@ try {
                     // La contraseña es correcta, iniciar sesión
                     $_SESSION["loggedin"] = true;
                     $_SESSION["id"] = $row["id"];
-                    $_SESSION["username"] = $row["username"]; // **CORREGIDO: Usando $row["username"]**
+                    $_SESSION["username"] = $row["username"];
 
                     // Redirigir al usuario a la página principal
                     header("location: index.html"); // Cambia "index.html" por tu página principal

@@ -180,7 +180,7 @@ if (isset($_GET['eliminar'])) {
         <ul>
             <li><a href="#">Términos y Condiciones</a></li>
             <li><a href="#">Política de Privacidad</a></li>
-            
+
         </ul>
     </nav>
 </footer>

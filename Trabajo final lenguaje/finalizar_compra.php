@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="camisetas.html">Camisetas</a></li>
                 <li><a href="equipos.html">Equipos</a></li>
                 <li><a href="carrito.php">Carrito</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </nav>
     </header>
