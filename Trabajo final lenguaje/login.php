@@ -32,7 +32,7 @@ require_once "login_process.php";
                 <li><a href="camisetas.html">Camisetas</a></li>
                 <li><a href="equipos.html">Equipos</a></li>
                 <li><a href="carrito.php">Carrito</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li><a href="login.html">Login</a></li>
             </ul>
         </nav>
     </header>
